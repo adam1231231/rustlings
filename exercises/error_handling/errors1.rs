@@ -5,15 +5,14 @@
 // construct to `Option` that can be used to express error conditions. Let's use it!
 // Execute `rustlings hint errors1` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
 
 use std::panic::PanicInfo;
 
 
-pub fn generate_nametag_text(name: String) -> Option<Result<String, PanicInfo>> {
+pub fn generate_nametag_text(name: String) -> Result<String, String> {
     if name.is_empty() {
         // Empty names aren't allowed.
-        Err(String::from("Oops, something went wrong, no empty strings allowed"))
+        Err(String::from("`name` was empty; it must be nonempty."))
     } else {
         Ok(format!("Hi! My name is {}", name))
     }
