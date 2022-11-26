@@ -7,12 +7,15 @@
 
 // I AM NOT DONE
 
-pub fn generate_nametag_text(name: String) -> Option<String> {
+use std::panic::PanicInfo;
+
+
+pub fn generate_nametag_text(name: String) -> Option<Result<String, PanicInfo>> {
     if name.is_empty() {
         // Empty names aren't allowed.
-        None
+        Err(String::from("Oops, something went wrong, no empty strings allowed"))
     } else {
-        Some(format!("Hi! My name is {}", name))
+        Ok(format!("Hi! My name is {}", name))
     }
 }
 
